@@ -2,7 +2,7 @@
 
 #include <cstdint>
 
-#include "Vexample__Dpi.h"
+#include "VFS_mul_test__Dpi.h"
 
 extern bool load_bin_to_ram(const char* filename, uint8_t* ram_ptr, uint32_t max_size, uint32_t offset);
 extern bool load_bin_to_ram_128bit(const char* filename, uint8_t* ram_ptr, uint32_t max_size, uint32_t offset);

@@ -6,8 +6,8 @@
 #else
 #include <verilated_fst_c.h>
 #endif
-#include "Vexample.h"
-#include "Vexample__Syms.h"
+#include "VFS_mul_test.h"
+#include "VFS_mul_test__Syms.h"
 #include "memory.h"
 #include <fstream>
 #include <iomanip>
@@ -21,7 +21,12 @@ bool trace_on = false;
 
 vluint64_t sim_time = 0;
 
-Vexample *dut = nullptr;
+double sc_time_stamp()
+{
+    return static_cast<double>(sim_time);
+}
+
+VFS_mul_test *dut = nullptr;
 #ifdef TRACE_VCD
 using TraceType = VerilatedVcdC;
 const char *trace_file = "waveform.vcd";
@@ -37,7 +42,7 @@ void runtill();
 int main(int argc, char **argv, char **env)
 {
     // 1. initialize verilator and create instance of the DUT
-    dut = new Vexample;
+    dut = new VFS_mul_test;
     Verilated::traceEverOn(true);
     m_trace = new TraceType;
     dut->trace(m_trace, 5);
@@ -80,5 +85,5 @@ void runtill()
         if (trace_on && m_trace)
             m_trace->dump(sim_time);
         sim_time++;
-    } while (sim_time < MAX_SIM_TIME);
+    } while (sim_time < MAX_SIM_TIME && !Verilated::gotFinish());
 }

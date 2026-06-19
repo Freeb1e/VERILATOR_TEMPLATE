@@ -8,7 +8,7 @@ CSOURCE+=$(shell find csrc -name "*.c" -not -path "*/tools/capstone/repo/*")
 CSOURCE+=$(shell find csrc -name "*.cc" -not -path "*/tools/capstone/repo/*")
 
 # Top module name used by Verilator. create_top_sv.sh can update this value.
-TOP_NAME ?= example
+TOP_NAME ?= FS_mul_test
 FST_OBJ_DIR ?= obj_dir_fst
 VCD_OBJ_DIR ?= obj_dir_vcd
 
